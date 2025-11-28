@@ -1,0 +1,15 @@
+{% extends "base.html" %} 
+{% block title_head%}Actualizar Auto{% endblock title_head %}
+
+{% block contenido %}
+    
+    <form action={% url "actualizar" %} method ='POST'>
+    {% csrf_token %}
+        
+        {{formulario}}
+        
+        <input type="submit" value="Actualizar" >
+
+
+    </form>
+{% endblock contenido %}

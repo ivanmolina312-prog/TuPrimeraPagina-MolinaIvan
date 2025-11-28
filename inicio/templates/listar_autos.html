@@ -1,8 +1,17 @@
+{% extends "base.html" %} 
+{% block title_head%}Listar Autos{% endblock title_head %}
+ 
+ {% block contenido %}
+        
+   <ul>
+        {% for auto in listado_de_auto %}
+        <li>
+            {{auto}} | <a href={% url "ver" auto.id %}>Ver</a> |  <a href={% url "actualizar" auto.id %}>Actualizar</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock contenido %}    
+
+
 {{listado_de_autos}}
-<ul>
-    {% for auto in listado_de_auto %}
-    <li>
-        {{auto}}
-    </li>
-    {% end for %}
-</ul>
+

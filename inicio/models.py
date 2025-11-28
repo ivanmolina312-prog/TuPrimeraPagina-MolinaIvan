@@ -7,5 +7,5 @@ class Auto(models.Model):
     marca = models.CharField(max_length=30)   
 
     def __str__(self):
-        return f'auto({self.id}): {self.marca} - {self.modelo}'
+        return f'Auto({self.id}): {self.marca} - {self.modelo}'
 
