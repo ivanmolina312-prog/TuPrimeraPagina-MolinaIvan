@@ -8,6 +8,11 @@
     <li>
         Modelo: {{auto.modelo}}
     </li>
+    {% if auto.imagen %}
+    <li>
+        Imagen: <img src={{auto.imagen.url}} alt="Imagen del auto" height='200px'>
+    </li>
+    {% endif %}
 </ul>
 
 

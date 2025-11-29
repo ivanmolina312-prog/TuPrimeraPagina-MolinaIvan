@@ -2,16 +2,28 @@
 {% block title_head%}Listar Autos{% endblock title_head %}
  
  {% block contenido %}
+
+     <form action={% url "listado" %} method="get">
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    </form>
+
+    {% if listado_de_autos %}   
+    <ul>
+        {% for auto in listado_de_autos %}
         
-   <ul>
-        {% for auto in listado_de_auto %}
         <li>
-            {{auto}} | <a href={% url "ver" auto.id %}>Ver</a> |  <a href={% url "actualizar" auto.id %}>Actualizar</a>
+            {{auto}}
+            | <a href={% url "ver" auto.id %}>Ver</a> 
+            | <a href={% url "actualizar" auto.id %}>Actualizar</a>
+            | <a href={% url "eliminar" auto.id %}>Eliminar</a>
         </li>
+        
         {% endfor %}
+        
     </ul>
-{% endblock contenido %}    
-
-
-{{listado_de_autos}}
+    {% else %}
+    <p>No se encontraron autos.</p>   
+    {% endif %}
+{% endblock contenido %}
 

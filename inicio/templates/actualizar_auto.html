@@ -3,10 +3,10 @@
 
 {% block contenido %}
     
-    <form action={% url "actualizar" %} method ='POST'>
+    <form action={% url "actualizar" %} method ='POST' enctype='multipart/form-data'>
     {% csrf_token %}
         
-        {{formulario}}
+        {{form}}
         
         <input type="submit" value="Actualizar" >
 
