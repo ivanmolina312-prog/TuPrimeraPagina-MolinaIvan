@@ -1,6 +1,59 @@
 {% extends "base.html" %} 
 {% block title_head %}Listar Autos{% endblock title_head %}
 {% block contenido %}
+<style>
+    .contenedor {
+        margin-top: 30px;
+        padding: 20px;
+    }
+
+    .tarjeta {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        margin-bottom: 15px;
+    }
+
+    .titulo {
+        color: #1e88e5;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .boton {
+        background: #1e88e5;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    .boton:hover {
+        background: #1565c0;
+    }
+</style>
+
+<div class="contenedor">
+    <h2 class="titulo">Listado de Autos</h2>
+
+    {% for auto in autos %}
+        <div class="tarjeta">
+            <strong>{{ auto.marca }} {{ auto.modelo }}</strong><br>
+            Year: {{ auto.year }}<br>
+            Precio: ${{ auto.precio }}
+
+            <br><br>
+            <a class="boton" href="{% url 'detalle_auto' auto.id %}">Ver detalles</a>
+            <a class="boton" href="{% url 'editar_auto' auto.id %}" style="margin-left: 8px;">Editar</a>
+            <a class="boton" href="{% url 'eliminar_auto' auto.id %}" style="margin-left: 8px; background: #e53935;">Eliminar</a>
+        </div>
+    {% empty %}
+        <p>No hay autos cargados.</p>
+    {% endfor %}
+</div>
 
      <form action={% url "listado" %} method="get">
         {{formulario}}
